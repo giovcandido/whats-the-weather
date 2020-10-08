@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import Router from './router/router';
 
-import './App.css';
+import './App.sass';
 
 const App: React.FC = () => {
   return (
