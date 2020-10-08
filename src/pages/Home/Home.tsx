@@ -1,11 +1,12 @@
 import React, { FormEvent, useState } from 'react';
 
-// import fetchCurrentWeather from '../../services/api';
+import fetchCurrentWeather from '../../services/api';
 import ICurrentWeatherData from '../../shared/interfaces/ICurrentWeatherData';
+
+import WeatherCard from '../../components/WeatherCard/WeatherCard';
 
 import logo from '../../assets/logo.svg';
 import styles from './Home.module.sass';
-import fetchCurrentWeather from '../../services/api';
 
 const Home: React.FC = () => {
   const [city, setCity] = useState<string>('');
@@ -40,30 +41,7 @@ const Home: React.FC = () => {
       </section>
       <section className={styles.pageCards}>
         {newCityWeather && (
-          <article className={styles.card}>
-            <header className={styles.cardHeader}>
-              <span>{newCityWeather.name}</span>
-              <span>{newCityWeather.sys.country}</span>
-            </header>
-            <div className={styles.cardMain}>
-              <div className={styles.cardTemp}>
-                <img src={`http://openweathermap.org/img/w/${newCityWeather.weather[0].icon}.png`} alt="weather icon" />
-                <span>{newCityWeather.main.temp}°C</span>
-              </div>                
-              <span>Feels like: {newCityWeather.main.feels_like}°C</span>
-              <span>{newCityWeather.weather[0].main}: {newCityWeather.weather[0].description}</span>
-            </div>
-            <div className={styles.cardDetails}>
-              <div>
-                <span>Max temp: {newCityWeather.main.temp_max}°C</span>
-                <span>Min temp: {newCityWeather.main.temp_min}°C</span>
-              </div>
-              <div>
-                <span>Humidity: {newCityWeather.main.humidity}%</span>
-                <span>Wind speed: {newCityWeather.wind.speed}km/h</span>
-              </div>
-            </div>
-          </article>
+          <WeatherCard currentWeatherData={newCityWeather} />
         )} 
       </section>
       <footer className={styles.pageFooter}>
