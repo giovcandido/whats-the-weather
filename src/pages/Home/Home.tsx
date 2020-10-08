@@ -16,7 +16,29 @@ const Home: React.FC = () => {
         </form>
       </section>
       <section className={styles.pageCards}>
-        <h2>City cards here:</h2>
+        <article className={styles.card}>
+          <header className={styles.cardHeader}>
+            <span>London</span>
+          </header>
+          <div className={styles.cardMain}>
+            <img src="https://cdn0.iconfinder.com/data/icons/weather-forecast-17/128/forecast-weather_rain-heavy-drizzle-512.png" />
+            <div>
+              <span>280°F</span>
+              <span>Drizzle</span>
+              <span>Light intensity drizzle</span>
+            </div>
+          </div>
+          <div className={styles.cardDetails}>
+            <div>
+              <span>Max temp: 281°F</span>
+              <span>Min temp: 279°F</span>
+            </div>
+            <div>
+              <span>Humidity: 81%</span>
+              <span>Wind speed: 4.1km/h</span>
+            </div>
+          </div>
+        </article>
       </section>
       <footer className={styles.pageFooter}>
         <p>Made by <a href="https://github.com/giovcandido" rel="noopener noreferrer" target="_blank">Giovani Candido</a></p>
