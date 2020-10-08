@@ -6,7 +6,7 @@ const Dashboard: React.FC = () => {
       <header>
       </header>
       <section>
-        <h1>Dashboard</h1>
+        <h1>Home</h1>
       </section>
       <footer>
         <p>Made by <a href="https://github.com/giovcandido" rel="noopener noreferrer" target="_blank">Giovani Candido</a></p>
