@@ -29,7 +29,6 @@
     button
       padding: 5px
       background-color: #00c853
-      border: 2px solid #fff
       border-radius: 0 5px 5px 0
       color: #fff
       font-weight: bold
@@ -44,7 +43,6 @@
     background-color: #fff
     color: #212121
     min-width: 25%
-    border: 2px solid #fff
     border-radius: 5px
     padding: 2%
 
@@ -52,8 +50,17 @@
       display: block
     
     .cardHeader
+      display: flex
+      justify-content: space-between
       font-weight: bold
       font-size: 2em  
+
+      :nth-child(2)
+        background-color: #00c853
+        color: #fff
+        border-radius: 5px
+        font-size: 0.8em  
+        padding: 1%
 
     .cardMain
       display: flex
