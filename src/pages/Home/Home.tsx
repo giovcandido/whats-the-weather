@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FormEvent, useState } from 'react';
 
 import fetchCurrentWeather from '../../services/api';
 
@@ -6,7 +6,13 @@ import logo from '../../assets/logo.svg';
 import styles from './Home.module.sass';
 
 const Home: React.FC = () => {
-  fetchCurrentWeather('Bauru');
+  const [city, setCity] = useState<string>('');
+
+  const handleCitySearch = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    
+    console.log(city);
+  }
 
   return(
     <div className={styles.pageContainer}>
@@ -16,8 +22,8 @@ const Home: React.FC = () => {
       </header>
       <section className={styles.pageSearch}>
         <h1>Get weather information for any city you want</h1>
-        <form>
-          <input type="text" placeholder="Enter the city name" />
+        <form onSubmit={handleCitySearch}>
+          <input type="text" placeholder="Enter the city name" value={city} onChange={(e) => setCity(e.target.value)} />
           <button type="submit">Search</button>
         </form>
       </section>
