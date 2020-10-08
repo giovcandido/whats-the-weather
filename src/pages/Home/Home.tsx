@@ -1,9 +1,13 @@
 import React from 'react';
 
+import fetchCurrentWeather from '../../services/api';
+
 import logo from '../../assets/logo.svg';
 import styles from './Home.module.sass';
 
 const Home: React.FC = () => {
+  fetchCurrentWeather('Bauru');
+
   return(
     <div className={styles.pageContainer}>
       <header className={styles.pageHeader}>
