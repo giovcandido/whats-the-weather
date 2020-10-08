@@ -1,17 +1,28 @@
 import React, { FormEvent, useState } from 'react';
 
-import fetchCurrentWeather from '../../services/api';
+// import fetchCurrentWeather from '../../services/api';
+import ICurrentWeatherData from '../../shared/interfaces/ICurrentWeatherData';
 
 import logo from '../../assets/logo.svg';
 import styles from './Home.module.sass';
+import fetchCurrentWeather from '../../services/api';
 
 const Home: React.FC = () => {
   const [city, setCity] = useState<string>('');
+  const [newCityWeather, setNewCityWeather] = useState<ICurrentWeatherData>();
 
-  const handleCitySearch = (event: FormEvent<HTMLFormElement>) => {
+  const handleCitySearch = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     
-    console.log(city);
+    try{
+      const response = await fetchCurrentWeather(city, 'metric');
+
+      const data: ICurrentWeatherData = response.data;
+
+      setNewCityWeather(data);
+    }catch(err){
+      console.log(err);
+    }
   }
 
   return(
@@ -28,30 +39,32 @@ const Home: React.FC = () => {
         </form>
       </section>
       <section className={styles.pageCards}>
-        <article className={styles.card}>
-          <header className={styles.cardHeader}>
-            <span>London</span>
-            <span>GB</span>
-          </header>
-          <div className={styles.cardMain}>
-            <img src="https://cdn0.iconfinder.com/data/icons/weather-forecast-17/128/forecast-weather_rain-heavy-drizzle-512.png" />
-            <div>
-              <span>280°F</span>
-              <span>Drizzle</span>
-              <span>Light intensity drizzle</span>
+        {newCityWeather && (
+          <article className={styles.card}>
+            <header className={styles.cardHeader}>
+              <span>{newCityWeather.name}</span>
+              <span>{newCityWeather.sys.country}</span>
+            </header>
+            <div className={styles.cardMain}>
+              <div className={styles.cardTemp}>
+                <img src={`http://openweathermap.org/img/w/${newCityWeather.weather[0].icon}.png`} alt="weather icon" />
+                <span>{newCityWeather.main.temp}°C</span>
+              </div>                
+              <span>Feels like: {newCityWeather.main.feels_like}°C</span>
+              <span>{newCityWeather.weather[0].main}: {newCityWeather.weather[0].description}</span>
             </div>
-          </div>
-          <div className={styles.cardDetails}>
-            <div>
-              <span>Max temp: 281°F</span>
-              <span>Min temp: 279°F</span>
+            <div className={styles.cardDetails}>
+              <div>
+                <span>Max temp: {newCityWeather.main.temp_max}°C</span>
+                <span>Min temp: {newCityWeather.main.temp_min}°C</span>
+              </div>
+              <div>
+                <span>Humidity: {newCityWeather.main.humidity}%</span>
+                <span>Wind speed: {newCityWeather.wind.speed}km/h</span>
+              </div>
             </div>
-            <div>
-              <span>Humidity: 81%</span>
-              <span>Wind speed: 4.1km/h</span>
-            </div>
-          </div>
-        </article>
+          </article>
+        )} 
       </section>
       <footer className={styles.pageFooter}>
         <p>Made by <a href="https://github.com/giovcandido" rel="noopener noreferrer" target="_blank">Giovani Candido</a></p>
