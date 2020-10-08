@@ -9,8 +9,8 @@ const api = axios.create({
   }
 });
 
-const fetchCurrentWeather = async (city: string) => {
-  const response = await api.get(`/weather?q=${city}`);
+const fetchCurrentWeather = async (city: string, units: string) => {
+  const response = await api.get(`/weather?q=${city}&units=${units}`);
 
   return response;
 }
