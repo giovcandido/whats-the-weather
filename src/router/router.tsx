@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import Home from '../pages/Home/Home';
 import City from '../pages/City/City';
 
-const Routes: React.FC = () => {
+const Router: React.FC = () => {
   return (
     <Switch>
       <Route path="/" exact component={Home} />
@@ -13,4 +13,4 @@ const Routes: React.FC = () => {
   );
 };
 
-export default Routes;
+export default Router;
