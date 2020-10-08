@@ -7,7 +7,7 @@ interface ICurrentWeatherData{
     temp: number;
     temp_max: number;
     temp_min: number;
-    //feels_like: number;
+    feels_like: number;
     humidity: number;
   },
   weather: {
