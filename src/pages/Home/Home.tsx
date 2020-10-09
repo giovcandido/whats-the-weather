@@ -3,10 +3,9 @@ import {BiSearchAlt} from 'react-icons/bi';
 import {FaLightbulb, FaRegLightbulb} from 'react-icons/fa';
 
 import fetchCurrentWeather from '../../services/api';
-
-import ITheme from '../../shared/interfaces/ITheme';
 import ICurrentWeatherData from '../../shared/interfaces/ICurrentWeatherData';
 
+import ThemeContainer from '../../components/ThemeContainer/ThemeContainer';
 import WeatherCard from '../../components/WeatherCard/WeatherCard';
 
 import logo from '../../assets/logo.svg';
@@ -32,40 +31,24 @@ const Home: React.FC = () => {
     }
   }
 
-  const [themeState, setThemeState] = useState<ITheme>({
-    dark: true,
-    className: 'dark'
-  });
+  const [darkTheme, setDarkTheme] = useState<boolean>(true);
 
   useEffect(() => {
-    const theme = localStorage.getItem('@whats-the-weather:Theme');
+    const dark = localStorage.getItem('@whats-the-weather:Dark');
 
-    if(theme){
-      const {dark, className} = JSON.parse(theme);
+    if(dark){
+      const parsedDark: boolean = JSON.parse(dark);
       
-      setThemeState({
-        dark,
-        className
-      });
+      setDarkTheme(parsedDark);
     }
   }, []);
-
-  const handleThemeChange = () => {
-    const dark = !themeState.dark;
-    const className = dark ? 'dark' : 'light';
-
-    setThemeState({
-      dark,
-      className
-    });
-  }
   
   useEffect(() => {
-    localStorage.setItem('@whats-the-weather:Theme', JSON.stringify(themeState));
-  }, [themeState]);
+    localStorage.setItem('@whats-the-weather:Dark', JSON.stringify(darkTheme));
+  }, [darkTheme]);
 
   return(
-    <div className={`${themeState.className}`}>
+    <ThemeContainer dark={darkTheme}>
       <div className={styles.pageContainer}>
         <header className={styles.pageHeader}>
           <div className={styles.logo}>
@@ -73,8 +56,8 @@ const Home: React.FC = () => {
             <h3>What's the weather?</h3>
           </div>
           <div className={styles.settings}>
-            <button onClick={handleThemeChange}>
-            {themeState.dark ?  (
+            <button onClick={() => setDarkTheme(!darkTheme)}>
+            {darkTheme ?  (
               <>
                 <FaRegLightbulb size={15} />
                 <span>Lights out</span>
@@ -104,7 +87,7 @@ const Home: React.FC = () => {
           <p>Made by <a href="https://github.com/giovcandido" rel="noopener noreferrer" target="_blank">Giovani Candido</a></p>
         </footer>
       </div>
-    </div>
+    </ThemeContainer>
   );
 };
 
