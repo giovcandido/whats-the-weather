@@ -11,7 +11,7 @@ import styles from './Home.module.sass';
 
 const Home: React.FC = () => {
   const [city, setCity] = useState<string>('');
-  const [newCityWeather, setNewCityWeather] = useState<ICurrentWeatherData>();
+  const [citiesWeatherData, setCitiesWeatherData] = useState<ICurrentWeatherData[]>([]);
 
   const handleCitySearch = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -21,7 +21,9 @@ const Home: React.FC = () => {
 
       const data: ICurrentWeatherData = response.data;
 
-      setNewCityWeather(data);
+      setCitiesWeatherData([data, ...citiesWeatherData]);
+
+      setCity('');
     }catch(err){
       console.log(err);
     }
@@ -41,9 +43,9 @@ const Home: React.FC = () => {
         </form>
       </section>
       <section className={styles.pageCards}>
-        {newCityWeather && (
-          <WeatherCard currentWeatherData={newCityWeather} />
-        )} 
+        {citiesWeatherData.map(cityWeatherData => (
+          <WeatherCard key={cityWeatherData.name} currentWeatherData={cityWeatherData} />
+        ))} 
       </section>
       <footer className={styles.pageFooter}>
         <p>Made by <a href="https://github.com/giovcandido" rel="noopener noreferrer" target="_blank">Giovani Candido</a></p>
