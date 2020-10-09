@@ -5,7 +5,7 @@ import fetchCurrentWeather from '../../services/api';
 import ICurrentWeatherData from '../../shared/interfaces/ICurrentWeatherData';
 
 import ThemeContainer from '../../components/ThemeContainer/ThemeContainer';
-import LampButton from '../../components/LampButton/LampButton';
+import ThemeButton from '../../components/ThemeButton/ThemeButton';
 import WeatherCard from '../../components/WeatherCard/WeatherCard';
 
 import logo from '../../assets/logo.svg';
@@ -60,7 +60,7 @@ const Home: React.FC = () => {
             <h3>What's the weather?</h3>
           </div>
           <div className={styles.settings}>
-            <LampButton lightOff={darkTheme} handleLightSwitch={handleThemeChange}/>
+            <ThemeButton dark={darkTheme} handleThemeChange={handleThemeChange}/>
           </div>
         </header>
         <section className={styles.pageSearch}>

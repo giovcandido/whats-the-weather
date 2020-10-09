@@ -1,18 +1,18 @@
 import React from 'react';
 import {FaLightbulb, FaRegLightbulb} from 'react-icons/fa';
 
-interface ILampButtonProps{
-  lightOff: boolean;
-  handleLightSwitch: Function;
+interface IThemeButtonProps{
+  dark: boolean;
+  handleThemeChange: Function;
 }
 
-const LampButton: React.FC<ILampButtonProps> = ({lightOff, handleLightSwitch}) => {
+const ThemeButton: React.FC<IThemeButtonProps> = ({dark, handleThemeChange}) => {
   const handleButtonClick = () =>{
-    handleLightSwitch(!lightOff);
+    handleThemeChange(!dark);
   }
 
   const renderButtonContent = () => {
-    if(lightOff){
+    if(dark){
       return (
         <>
           <FaRegLightbulb size={15} />
@@ -36,4 +36,4 @@ const LampButton: React.FC<ILampButtonProps> = ({lightOff, handleLightSwitch}) =
   );
 }
 
-export default LampButton;
+export default ThemeButton;
