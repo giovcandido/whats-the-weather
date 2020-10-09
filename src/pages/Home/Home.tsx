@@ -59,6 +59,10 @@ const Home: React.FC = () => {
       className
     });
   }
+  
+  useEffect(() => {
+    localStorage.setItem('@whats-the-weather:Theme', JSON.stringify(themeState));
+  }, [themeState]);
 
   return(
     <div className={`${themeState.className}`}>
@@ -68,9 +72,21 @@ const Home: React.FC = () => {
             <img src={logo} alt="logo with clouds" />
             <h3>What's the weather?</h3>
           </div>
-          <button onClick={handleThemeChange}>
-            {themeState.dark ? <FaLightbulb size={15} /> : <FaRegLightbulb size={15} />}
+          <div className={styles.settings}>
+            <button onClick={handleThemeChange}>
+            {themeState.dark ?  (
+              <>
+                <FaRegLightbulb size={15} />
+                <span>Lights out</span>
+              </>
+            ) : (
+              <>
+                <FaLightbulb size={15} />
+                <span>Lights on</span>
+              </>
+            )}
           </button>
+          </div>
         </header>
         <section className={styles.pageSearch}>
           <h1>Get weather information for any city you want</h1>

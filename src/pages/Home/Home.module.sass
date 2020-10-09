@@ -15,28 +15,29 @@ $secondary-color-darker: darken($secondary-color, 5%)
 .pageHeader
   display: flex
   justify-content: space-between
+  align-items: center
 
   .logo
     display: flex
     align-items: center
-    flex: 1
     font-size: 1.2em
+    flex: 1
     
     img
       max-width: 65px
       margin-right: 2%
   
-  button
-    background-color: $secondary-color
-    border-color: $secondary-color
-    border-radius: 5px
-    padding: 0 2% 0 2%
-    color: #fff
-    cursor: pointer
+  .settings
+    display: flex
+    justify-content: flex-end
 
-    &[data-title]:hover:after
-      opacity: 0.8
-
+    button 
+      background-color: transparent
+      display: flex
+      justify-content: space-between
+      color: $secondary-color
+      cursor: pointer
+   
 .pageSearch
   h1
     margin-bottom: 1%
