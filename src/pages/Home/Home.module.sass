@@ -14,12 +14,28 @@ $secondary-color-darker: darken($secondary-color, 5%)
 
 .pageHeader
   display: flex
-  align-items: center
-  font-size: 1.2em
+  justify-content: space-between
 
   .logo
-    max-width: 65px
-    margin-right: 2%
+    display: flex
+    align-items: center
+    flex: 1
+    font-size: 1.2em
+    
+    img
+      max-width: 65px
+      margin-right: 2%
+  
+  button
+    background-color: $secondary-color
+    border-color: $secondary-color
+    border-radius: 5px
+    padding: 0 2% 0 2%
+    color: #fff
+    cursor: pointer
+
+    &[data-title]:hover:after
+      opacity: 0.8
 
 .pageSearch
   h1
