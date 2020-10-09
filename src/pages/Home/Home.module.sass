@@ -50,9 +50,10 @@ $secondary-color-darker: darken($secondary-color, 5%)
         background-color: $secondary-color-darker
 
 .pageCards
-  display: flex
-  justify-content: space-between
-  flex-wrap: wrap
+  display: grid
+  grid-template-columns: repeat(3, 1fr)
+  grid-gap: 30px
+  justify-items: stretch
   margin-top: 1%
 
 .pageFooter
