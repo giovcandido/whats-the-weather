@@ -7,10 +7,6 @@ interface IThemeButtonProps{
 }
 
 const ThemeButton: React.FC<IThemeButtonProps> = ({dark, handleThemeChange}) => {
-  const handleButtonClick = () =>{
-    handleThemeChange(!dark);
-  }
-
   const renderButtonContent = () => {
     if(dark){
       return (
@@ -30,7 +26,7 @@ const ThemeButton: React.FC<IThemeButtonProps> = ({dark, handleThemeChange}) => 
   }
 
   return (
-    <button onClick={handleButtonClick}>
+    <button onClick={() => handleThemeChange()}>
       {renderButtonContent()}
     </button>
   );
