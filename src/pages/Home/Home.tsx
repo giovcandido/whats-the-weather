@@ -4,6 +4,8 @@ import {BiSearchAlt} from 'react-icons/bi';
 import fetchCurrentWeather from '../../services/api';
 import ICurrentWeatherData from '../../shared/interfaces/ICurrentWeatherData';
 
+import useDarkThemeState from '../../shared/hooks/useDarkThemeState';
+
 import ThemeContainer from '../../components/ThemeContainer/ThemeContainer';
 import ThemeButton from '../../components/ThemeButton/ThemeButton';
 import WeatherCard from '../../components/WeatherCard/WeatherCard';
@@ -31,17 +33,7 @@ const Home: React.FC = () => {
     }
   }
 
-  const [darkTheme, setDarkTheme] = useState<boolean>(true);
-
-  useEffect(() => {
-    const dark = localStorage.getItem('@whats-the-weather:Dark');
-
-    if(dark){
-      const parsedDark: boolean = JSON.parse(dark);
-      
-      setDarkTheme(parsedDark);
-    }
-  }, []);
+  const [darkTheme, setDarkTheme] = useDarkThemeState(true);
   
   const handleThemeChange = () => {
     setDarkTheme(!darkTheme);
