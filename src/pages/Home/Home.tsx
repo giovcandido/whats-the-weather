@@ -1,11 +1,11 @@
 import React, { FormEvent, useEffect, useState } from 'react';
 import {BiSearchAlt} from 'react-icons/bi';
-import {FaLightbulb, FaRegLightbulb} from 'react-icons/fa';
 
 import fetchCurrentWeather from '../../services/api';
 import ICurrentWeatherData from '../../shared/interfaces/ICurrentWeatherData';
 
 import ThemeContainer from '../../components/ThemeContainer/ThemeContainer';
+import LampButton from '../../components/LampButton/LampButton';
 import WeatherCard from '../../components/WeatherCard/WeatherCard';
 
 import logo from '../../assets/logo.svg';
@@ -43,6 +43,10 @@ const Home: React.FC = () => {
     }
   }, []);
   
+  const handleThemeChange = () => {
+    setDarkTheme(!darkTheme);
+  }
+
   useEffect(() => {
     localStorage.setItem('@whats-the-weather:Dark', JSON.stringify(darkTheme));
   }, [darkTheme]);
@@ -56,19 +60,7 @@ const Home: React.FC = () => {
             <h3>What's the weather?</h3>
           </div>
           <div className={styles.settings}>
-            <button onClick={() => setDarkTheme(!darkTheme)}>
-            {darkTheme ?  (
-              <>
-                <FaRegLightbulb size={15} />
-                <span>Lights out</span>
-              </>
-            ) : (
-              <>
-                <FaLightbulb size={15} />
-                <span>Lights on</span>
-              </>
-            )}
-          </button>
+            <LampButton lightOff={darkTheme} handleLightSwitch={handleThemeChange}/>
           </div>
         </header>
         <section className={styles.pageSearch}>
