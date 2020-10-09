@@ -1,4 +1,5 @@
 import React, { FormEvent, useState } from 'react';
+import {BiSearchAlt} from 'react-icons/bi';
 
 import fetchCurrentWeather from '../../services/api';
 import ICurrentWeatherData from '../../shared/interfaces/ICurrentWeatherData';
@@ -36,7 +37,7 @@ const Home: React.FC = () => {
         <h1>Get weather information for any city you want</h1>
         <form onSubmit={handleCitySearch}>
           <input type="text" placeholder="Enter the city name" value={city} onChange={(e) => setCity(e.target.value)} />
-          <button type="submit">Search</button>
+          <button type="submit"><BiSearchAlt size={20} /></button>
         </form>
       </section>
       <section className={styles.pageCards}>
