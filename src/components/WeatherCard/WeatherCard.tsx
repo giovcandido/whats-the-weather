@@ -19,7 +19,7 @@ const WeatherCard: React.FC<IWeatherCardProps> = ({currentWeatherData}) => {
       </header>
       <div className={styles.cardMain}>
         <div className={styles.cardTemp}>
-          <img src={`http://openweathermap.org/img/w/${weather[0].icon}.png`} alt="weather icon" />
+          <img src={`https://openweathermap.org/img/w/${weather[0].icon}.png`} alt="weather icon" />
           <span>{main.temp}°C</span>
         </div>                
         <span>Feels like: {main.feels_like}°C</span>
