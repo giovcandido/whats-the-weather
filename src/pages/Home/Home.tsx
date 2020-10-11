@@ -59,7 +59,7 @@ const Home: React.FC = () => {
           <h1>Get weather information for any city you want</h1>
           <form onSubmit={handleCitySearch}>
             <input type="text" placeholder="Enter the city name" value={city} onChange={(e) => setCity(e.target.value)} />
-            <button type="submit"><BiSearchAlt size={20} /></button>
+            <button type="submit"><BiSearchAlt /></button>
           </form>
         </section>
         <section className={styles.pageCards}>
