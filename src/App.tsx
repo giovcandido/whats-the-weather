@@ -7,7 +7,7 @@ import './App.sass';
 
 const App: React.FC = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/whats-the-weather/">
       <Router />
     </BrowserRouter>
   );
