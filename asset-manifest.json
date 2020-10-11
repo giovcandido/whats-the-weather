@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/giovcandido/whats-the-weather/static/css/main.a286953c.chunk.css",
+    "main.js": "/giovcandido/whats-the-weather/static/js/main.0229f865.chunk.js",
+    "main.js.map": "/giovcandido/whats-the-weather/static/js/main.0229f865.chunk.js.map",
+    "runtime-main.js": "/giovcandido/whats-the-weather/static/js/runtime-main.cd139909.js",
+    "runtime-main.js.map": "/giovcandido/whats-the-weather/static/js/runtime-main.cd139909.js.map",
+    "static/js/2.dffde90d.chunk.js": "/giovcandido/whats-the-weather/static/js/2.dffde90d.chunk.js",
+    "static/js/2.dffde90d.chunk.js.map": "/giovcandido/whats-the-weather/static/js/2.dffde90d.chunk.js.map",
+    "index.html": "/giovcandido/whats-the-weather/index.html",
+    "precache-manifest.88ee77930c46b952bec84753a0fd6cc1.js": "/giovcandido/whats-the-weather/precache-manifest.88ee77930c46b952bec84753a0fd6cc1.js",
+    "service-worker.js": "/giovcandido/whats-the-weather/service-worker.js",
+    "static/css/main.a286953c.chunk.css.map": "/giovcandido/whats-the-weather/static/css/main.a286953c.chunk.css.map",
+    "static/js/2.dffde90d.chunk.js.LICENSE.txt": "/giovcandido/whats-the-weather/static/js/2.dffde90d.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/giovcandido/whats-the-weather/static/media/logo.d488f7c0.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cd139909.js",
+    "static/js/2.dffde90d.chunk.js",
+    "static/css/main.a286953c.chunk.css",
+    "static/js/main.0229f865.chunk.js"
+  ]
+}
