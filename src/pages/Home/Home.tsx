@@ -74,7 +74,7 @@ const Home: React.FC = () => {
             <h3>What's the weather?</h3>
           </div>
           <div className={styles.settings}>
-            <ThemeButton dark={darkTheme} handleThemeChange={handleThemeChange}/>
+            <ThemeButton dark={darkTheme} onThemeChange={handleThemeChange}/>
           </div>
         </header>
         <section className={styles.pageSearch}>
