@@ -43,7 +43,7 @@ $secondary-color-darker: darken($secondary-color, 5%)
     margin-bottom: 1%
   
   form
-    width: 45vw
+    width: 50vw
     display: flex
     justify-content: space-between
 
@@ -51,7 +51,7 @@ $secondary-color-darker: darken($secondary-color, 5%)
       flex: 1
       border: 2px solid #fff 
       border-radius: 5px 0 0 5px
-      padding: 2%
+      padding: 1.5%
       color: #212121
 
     button
@@ -72,6 +72,27 @@ $secondary-color-darker: darken($secondary-color, 5%)
       svg
         width: 1.5vw
         height: 1.5vw
+
+.error
+  display: flex
+  align-items: baseline
+  background-color: #fff
+  color: #e53935
+  padding: 0.5%
+  border-radius: 5px
+  max-width: 45vw
+
+  div 
+    flex: 1
+    display: flex
+    align-items: center
+
+    svg 
+      margin-right: 1%
+  
+  button
+    padding: 0
+    color: #e53935
 
 .pageCards
   display: grid

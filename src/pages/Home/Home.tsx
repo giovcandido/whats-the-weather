@@ -1,5 +1,7 @@
 import React, { FormEvent, useEffect, useState } from 'react';
 import {BiSearchAlt} from 'react-icons/bi';
+import {VscError} from 'react-icons/vsc';
+import {GrFormClose} from 'react-icons/gr';
 
 import fetchCurrentWeather from '../../services/api';
 import ICurrentWeatherData from '../../shared/interfaces/ICurrentWeatherData';
@@ -14,22 +16,39 @@ import logo from '../../assets/logo.svg';
 import styles from './Home.module.sass';
 
 const Home: React.FC = () => {
-  const [city, setCity] = useState<string>('');
+  const [cityName, setCityName] = useState<string>('');
   const [citiesWeatherData, setCitiesWeatherData] = useState<ICurrentWeatherData[]>([]);
-  
+  const [errorMessage, setErrorMessage] = useState<string>('');
+
   const handleCitySearch = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     
-    try{
-      const response = await fetchCurrentWeather(city, 'metric');
+    if(!cityName){
+      setErrorMessage('Type the name of the city to be searched. Ex: New York.');
+      return;
+    }
 
+    try{
+      const response = await fetchCurrentWeather(cityName, 'metric');
+    
       const data: ICurrentWeatherData = response.data;
 
       setCitiesWeatherData([data, ...citiesWeatherData]);
 
-      setCity('');
+      setCityName('');
+      setErrorMessage('');
     }catch(err){
-      console.log(err);
+      switch(err.response.status){
+        case 401:
+          setErrorMessage('Make sure you are using a valid API key.');
+          break;
+        case 404:
+          setErrorMessage('No city with the specified name was found.');
+          break;
+        case 429:
+          setErrorMessage('You have made too much requests. Try again in a hour.');
+          break;
+      }
     }
   }
 
@@ -58,10 +77,19 @@ const Home: React.FC = () => {
         <section className={styles.pageSearch}>
           <h1>Get weather information for any city you want</h1>
           <form onSubmit={handleCitySearch}>
-            <input type="text" placeholder="Enter the city name" value={city} onChange={(e) => setCity(e.target.value)} />
+            <input type="text" placeholder="Enter the city name" value={cityName} onChange={(e) => setCityName(e.target.value)} />
             <button type="submit"><BiSearchAlt /></button>
           </form>
         </section>
+        {errorMessage && (
+          <div className={styles.error}>
+            <div>
+              <VscError size={20} />
+              <p>{errorMessage}</p>
+            </div>
+            <button onClick={() => setErrorMessage('')}><GrFormClose size={20}/></button>
+          </div>
+        )}
         <section className={styles.pageCards}>
           {citiesWeatherData.map(cityWeatherData => (
             <WeatherCard key={cityWeatherData.name} currentWeatherData={cityWeatherData} />
