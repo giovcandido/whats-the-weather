@@ -17,7 +17,7 @@ const useDarkThemeState = (initialState: boolean) => {
     localStorage.setItem('@whats-the-weather:DarkTheme', JSON.stringify(state));
   }, [state]);
 
-  return [state, setState] as const
+  return [state, setState] as const;
 }
 
 export default useDarkThemeState;
