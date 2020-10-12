@@ -18,7 +18,7 @@ const Home: React.FC = () => {
   const [darkTheme, setDarkTheme] = useDarkThemeState(true);
   
   const [cityName, setCityName] = useState<string>('');
-  const [citiesWeatherData, setCitiesWeatherData] = useState<ICurrentWeatherData[]>([]);
+  const [allWeatherData, setAllWeatherData] = useState<ICurrentWeatherData[]>([]);
   const [errorMessage, setErrorMessage] = useState<string>('');
 
   const handleCitySearch = async (event: FormEvent<HTMLFormElement>) => {
@@ -30,11 +30,9 @@ const Home: React.FC = () => {
     }
 
     try{
-      const response = await fetchCurrentWeather(cityName, 'metric');
+      const data = await fetchCurrentWeather(cityName, 'metric');
     
-      const data: ICurrentWeatherData = response.data;
-
-      setCitiesWeatherData([data, ...citiesWeatherData]);
+      setAllWeatherData([data, ...allWeatherData]);
 
       setCityName('');
       setErrorMessage('');
@@ -55,7 +53,7 @@ const Home: React.FC = () => {
 
   return(
     <ThemeContainer dark={darkTheme}>
-      <div className={styles.pageContainer}>
+      <div className="pageContainer">
         <PageHeader darkTheme={darkTheme} onThemeChange={() => setDarkTheme(!darkTheme)} />
 
         <section className={styles.pageSearch}>
@@ -69,7 +67,7 @@ const Home: React.FC = () => {
         {errorMessage && <ErrorMessage message={errorMessage} closeError={() => setErrorMessage('')} />}
         
         <section className={styles.pageCards}>
-          {citiesWeatherData.map(weatherData => (
+          {allWeatherData.map(weatherData => (
             <WeatherCard key={weatherData.name} weatherData={weatherData} />
           ))} 
         </section>

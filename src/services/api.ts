@@ -1,6 +1,7 @@
 import axios from 'axios';
-
 import config from '../config/config';
+
+import ICurrentWeatherData from '../shared/interfaces/ICurrentWeatherData';
 
 const api = axios.create({
   baseURL: config.api.baseURL,
@@ -12,7 +13,7 @@ const api = axios.create({
 const fetchCurrentWeather = async (city: string, units: string) => {
   const response = await api.get(`/weather?q=${city}&units=${units}`);
 
-  return response;
+  return response.data as ICurrentWeatherData;
 }
 
 export default fetchCurrentWeather;
