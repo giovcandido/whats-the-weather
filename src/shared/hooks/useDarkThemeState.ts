@@ -13,6 +13,10 @@ const useDarkThemeState = (initialState: boolean) => {
     }
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem('@whats-the-weather:Dark', JSON.stringify(state));
+  }, [state]);
+
   return [state, setState] as const
 }
 

@@ -1,4 +1,4 @@
-import React, { FormEvent, useEffect, useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 import {BiSearchAlt} from 'react-icons/bi';
 
 import fetchCurrentWeather from '../../services/api';
@@ -17,10 +17,6 @@ import styles from './Home.module.sass';
 const Home: React.FC = () => {
   const [darkTheme, setDarkTheme] = useDarkThemeState(true);
   
-  useEffect(() => {
-    localStorage.setItem('@whats-the-weather:Dark', JSON.stringify(darkTheme));
-  }, [darkTheme]);
-
   const [cityName, setCityName] = useState<string>('');
   const [citiesWeatherData, setCitiesWeatherData] = useState<ICurrentWeatherData[]>([]);
   const [errorMessage, setErrorMessage] = useState<string>('');
