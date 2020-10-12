@@ -4,12 +4,8 @@ import ICurrentWeatherData from '../../shared/interfaces/ICurrentWeatherData';
 
 import styles from './WeatherCard.module.sass';
 
-interface IWeatherCardProps{
-  currentWeatherData: ICurrentWeatherData;
-}
-
-const WeatherCard: React.FC<IWeatherCardProps> = ({currentWeatherData}) => {
-  const {name, sys, main, weather, wind} = currentWeatherData;
+const WeatherCard: React.FC<{weatherData: ICurrentWeatherData}> = ({weatherData}) => {
+  const {name, sys, main, weather, wind} = weatherData;
 
   return (
     <article className={styles.card}>
