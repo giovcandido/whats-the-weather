@@ -10,6 +10,7 @@ import ThemeContainer from '../../components/ThemeContainer/ThemeContainer';
 import ThemeButton from '../../components/ThemeButton/ThemeButton';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import WeatherCard from '../../components/WeatherCard/WeatherCard';
+import PageFooter from '../../components/PageFooter/PageFooter';
 
 import logo from '../../assets/logo.svg';
 import styles from './Home.module.sass';
@@ -65,8 +66,8 @@ const Home: React.FC = () => {
           <div className={styles.settings}>
             <ThemeButton dark={darkTheme} onThemeChange={() => setDarkTheme(!darkTheme)}/>
           </div>
-        
         </header>
+        
         <section className={styles.pageSearch}>
           <h1>Get weather information for any city you want</h1>
           <form onSubmit={handleCitySearch}>
@@ -82,10 +83,7 @@ const Home: React.FC = () => {
             <WeatherCard key={weatherData.name} weatherData={weatherData} />
           ))} 
         </section>
-        
-        <footer className={styles.pageFooter}>
-          <p>Made by <a href="https://github.com/giovcandido" rel="noopener noreferrer" target="_blank">Giovani Candido</a></p>
-        </footer>
+        <PageFooter />
       </div>
     </ThemeContainer>
   );
