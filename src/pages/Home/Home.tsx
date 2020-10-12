@@ -15,6 +15,12 @@ import logo from '../../assets/logo.svg';
 import styles from './Home.module.sass';
 
 const Home: React.FC = () => {
+  const [darkTheme, setDarkTheme] = useDarkThemeState(true);
+  
+  useEffect(() => {
+    localStorage.setItem('@whats-the-weather:Dark', JSON.stringify(darkTheme));
+  }, [darkTheme]);
+
   const [cityName, setCityName] = useState<string>('');
   const [citiesWeatherData, setCitiesWeatherData] = useState<ICurrentWeatherData[]>([]);
   const [errorMessage, setErrorMessage] = useState<string>('');
@@ -51,20 +57,6 @@ const Home: React.FC = () => {
     }
   }
 
-  const handleErrorClosing = () => {
-    setErrorMessage('');
-  }
-
-  const [darkTheme, setDarkTheme] = useDarkThemeState(true);
-  
-  const handleThemeChange = () => {
-    setDarkTheme(!darkTheme);
-  }
-
-  useEffect(() => {
-    localStorage.setItem('@whats-the-weather:Dark', JSON.stringify(darkTheme));
-  }, [darkTheme]);
-
   return(
     <ThemeContainer dark={darkTheme}>
       <div className={styles.pageContainer}>
@@ -73,9 +65,11 @@ const Home: React.FC = () => {
             <img src={logo} alt="logo with clouds" />
             <h3>What's the weather?</h3>
           </div>
+        
           <div className={styles.settings}>
-            <ThemeButton dark={darkTheme} onThemeChange={handleThemeChange}/>
+            <ThemeButton dark={darkTheme} onThemeChange={() => setDarkTheme(!darkTheme)}/>
           </div>
+        
         </header>
         <section className={styles.pageSearch}>
           <h1>Get weather information for any city you want</h1>
@@ -84,12 +78,15 @@ const Home: React.FC = () => {
             <button type="submit"><BiSearchAlt /></button>
           </form>
         </section>
-        {errorMessage && <ErrorMessage message={errorMessage} closeError={handleErrorClosing} />}
+
+        {errorMessage && <ErrorMessage message={errorMessage} closeError={() => setErrorMessage('')} />}
+        
         <section className={styles.pageCards}>
-          {citiesWeatherData.map(cityWeatherData => (
-            <WeatherCard key={cityWeatherData.name} currentWeatherData={cityWeatherData} />
+          {citiesWeatherData.map(weatherData => (
+            <WeatherCard key={weatherData.name} weatherData={weatherData} />
           ))} 
         </section>
+        
         <footer className={styles.pageFooter}>
           <p>Made by <a href="https://github.com/giovcandido" rel="noopener noreferrer" target="_blank">Giovani Candido</a></p>
         </footer>
