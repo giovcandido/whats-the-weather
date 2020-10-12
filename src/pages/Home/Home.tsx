@@ -6,13 +6,12 @@ import ICurrentWeatherData from '../../shared/interfaces/ICurrentWeatherData';
 
 import useDarkThemeState from '../../shared/hooks/useDarkThemeState';
 
+import PageHeader from '../../components/PageHeader/PageHeader'; 
 import ThemeContainer from '../../components/ThemeContainer/ThemeContainer';
-import ThemeButton from '../../components/ThemeButton/ThemeButton';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import WeatherCard from '../../components/WeatherCard/WeatherCard';
 import PageFooter from '../../components/PageFooter/PageFooter';
 
-import logo from '../../assets/logo.svg';
 import styles from './Home.module.sass';
 
 const Home: React.FC = () => {
@@ -57,17 +56,8 @@ const Home: React.FC = () => {
   return(
     <ThemeContainer dark={darkTheme}>
       <div className={styles.pageContainer}>
-        <header className={styles.pageHeader}>
-          <div className={styles.logo}>
-            <img src={logo} alt="logo with clouds" />
-            <h3>What's the weather?</h3>
-          </div>
-        
-          <div className={styles.settings}>
-            <ThemeButton dark={darkTheme} onThemeChange={() => setDarkTheme(!darkTheme)}/>
-          </div>
-        </header>
-        
+        <PageHeader darkTheme={darkTheme} onThemeChange={() => setDarkTheme(!darkTheme)} />
+
         <section className={styles.pageSearch}>
           <h1>Get weather information for any city you want</h1>
           <form onSubmit={handleCitySearch}>
@@ -83,6 +73,7 @@ const Home: React.FC = () => {
             <WeatherCard key={weatherData.name} weatherData={weatherData} />
           ))} 
         </section>
+
         <PageFooter />
       </div>
     </ThemeContainer>
