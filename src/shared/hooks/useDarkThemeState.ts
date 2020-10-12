@@ -4,7 +4,7 @@ const useDarkThemeState = (initialState: boolean) => {
   const [state, setState] = useState<boolean>(initialState);
   
   useEffect(() => {
-    const prevState = localStorage.getItem('@whats-the-weather:Dark');
+    const prevState = localStorage.getItem('@whats-the-weather:DarkTheme');
 
     if(prevState){
       const parsedPrevState: boolean = JSON.parse(prevState);
@@ -14,7 +14,7 @@ const useDarkThemeState = (initialState: boolean) => {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('@whats-the-weather:Dark', JSON.stringify(state));
+    localStorage.setItem('@whats-the-weather:DarkTheme', JSON.stringify(state));
   }, [state]);
 
   return [state, setState] as const
