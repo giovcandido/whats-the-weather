@@ -1,7 +1,5 @@
 import React, { FormEvent, useEffect, useState } from 'react';
 import {BiSearchAlt} from 'react-icons/bi';
-import {VscError} from 'react-icons/vsc';
-import {GrFormClose} from 'react-icons/gr';
 
 import fetchCurrentWeather from '../../services/api';
 import ICurrentWeatherData from '../../shared/interfaces/ICurrentWeatherData';
@@ -10,6 +8,7 @@ import useDarkThemeState from '../../shared/hooks/useDarkThemeState';
 
 import ThemeContainer from '../../components/ThemeContainer/ThemeContainer';
 import ThemeButton from '../../components/ThemeButton/ThemeButton';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import WeatherCard from '../../components/WeatherCard/WeatherCard';
 
 import logo from '../../assets/logo.svg';
@@ -52,6 +51,10 @@ const Home: React.FC = () => {
     }
   }
 
+  const handleErrorClosing = () => {
+    setErrorMessage('');
+  }
+
   const [darkTheme, setDarkTheme] = useDarkThemeState(true);
   
   const handleThemeChange = () => {
@@ -81,15 +84,7 @@ const Home: React.FC = () => {
             <button type="submit"><BiSearchAlt /></button>
           </form>
         </section>
-        {errorMessage && (
-          <div className={styles.error}>
-            <div>
-              <VscError size={20} />
-              <p>{errorMessage}</p>
-            </div>
-            <button onClick={() => setErrorMessage('')}><GrFormClose size={20}/></button>
-          </div>
-        )}
+        {errorMessage && <ErrorMessage message={errorMessage} closeError={handleErrorClosing} />}
         <section className={styles.pageCards}>
           {citiesWeatherData.map(cityWeatherData => (
             <WeatherCard key={cityWeatherData.name} currentWeatherData={cityWeatherData} />
