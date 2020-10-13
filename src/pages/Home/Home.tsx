@@ -72,7 +72,7 @@ const Home: React.FC = () => {
 
   return(
     <ThemeContainer dark={darkTheme}>
-      <div className="pageContainer">
+      <div className={`pageContainer ${styles.pageContent}`}>
         <PageHeader darkTheme={darkTheme} onThemeChange={() => setDarkTheme(!darkTheme)} />
         <section className={styles.pageSearch}>
           <h1>Get weather information for any city you want</h1>

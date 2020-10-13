@@ -1,6 +1,6 @@
 $secondary-color: #00c853
 $secondary-color-darker: darken($secondary-color, 5%)
- 
+
 .pageSearch, .pageCards
   padding: 2% 0 2% 0
    
@@ -41,25 +41,40 @@ $secondary-color-darker: darken($secondary-color, 5%)
 
 .pageCards
   display: grid
-  grid-gap: 30px
+  grid-gap: 5%
   margin-top: 1%
 
 @media all and (max-width: 480px)
+  .pageContent
+    width: 95vw
+
   .pageCards
     grid-template-columns: repeat(1, 1fr)
 
 @media all and (min-width: 480px) and (max-width: 768px)
+  .pageContent
+    width: 90vw
+
   .pageCards
     grid-template-columns: repeat(1, 1fr)
 
 @media all and (min-width: 768px) and (max-width: 1024px)
+  .pageContent
+    width: 85vw
+
   .pageCards
     grid-template-columns: repeat(2, 1fr)
 
 @media all and (min-width: 1024px) and (max-width: 1280px)
+  .pageContent
+    width: 80vw
+
   .pageCards
     grid-template-columns: repeat(2, 1fr)
-  
+
 @media all and (min-width: 1280px)
+  .pageContent
+    width: 75vw
+
   .pageCards
     grid-template-columns: repeat(3, 1fr)
