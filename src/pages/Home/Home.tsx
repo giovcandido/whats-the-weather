@@ -1,5 +1,6 @@
 import React, { FormEvent, useState } from 'react';
-import {BiSearchAlt} from 'react-icons/bi';
+import { BiSearchAlt } from 'react-icons/bi';
+import { AiOutlineClear } from 'react-icons/ai';
 
 import fetchCurrentWeather from '../../services/api';
 import ICurrentWeatherData from '../../shared/interfaces/ICurrentWeatherData';
@@ -64,6 +65,11 @@ const Home: React.FC = () => {
     retrieveData();
   }
 
+  const handleErrorClosing = () => {
+    setErrorMessage('');
+    setCityName('');
+  }
+
   return(
     <ThemeContainer dark={darkTheme}>
       <div className="pageContainer">
@@ -76,13 +82,21 @@ const Home: React.FC = () => {
           </form>
         </section>
         {errorMessage && (
-          <ErrorMessage message={errorMessage} onErrorClose={() => {setErrorMessage(''); setCityName('')}} />
+          <ErrorMessage message={errorMessage} onErrorClose={handleErrorClosing} />
         )}
-        <section className={styles.pageCards}>
-          {allWeatherData.map(weatherData => (
-            <WeatherCard key={weatherData.name} weatherData={weatherData} />
-          ))} 
-        </section>
+        {allWeatherData.length > 0 && (
+          <section className="">
+            <section className={styles.pageCards}>
+              {allWeatherData.map(weatherData => (
+                <WeatherCard key={weatherData.name} weatherData={weatherData} />
+              ))}
+            </section>
+            <button className="btnLink" onClick={() => {setAllWeatherData([])}}>
+              <AiOutlineClear size={15} />
+              <span>Clear weather cards</span>
+            </button>
+          </section>
+        )}
         <PageFooter />
       </div>
     </ThemeContainer>
