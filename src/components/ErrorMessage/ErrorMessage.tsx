@@ -6,17 +6,17 @@ import styles from './ErrorMessage.module.sass';
 
 interface ErrorMessageProps{
   message: string;
-  closeError: Function;
+  onErrorClose: Function;
 }
 
-const ErrorMessage: React.FC<ErrorMessageProps> = ({message, closeError}) => {
+const ErrorMessage: React.FC<ErrorMessageProps> = ({message, onErrorClose}) => {
   return (
     <div className={styles.error}>
       <div>
         <VscError size={20} />
         <p>{message}</p>
       </div>
-      <button onClick={() => closeError()}><GrFormClose size={20}/></button>
+      <button onClick={() => onErrorClose()}><GrFormClose size={20}/></button>
     </div>
   );
 }

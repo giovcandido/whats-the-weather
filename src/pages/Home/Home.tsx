@@ -64,7 +64,7 @@ const Home: React.FC = () => {
           </form>
         </section>
 
-        {errorMessage && <ErrorMessage message={errorMessage} closeError={() => setErrorMessage('')} />}
+        {errorMessage && <ErrorMessage message={errorMessage} onErrorClose={() => {setErrorMessage(''); setCityName('')}} />}
         
         <section className={styles.pageCards}>
           {allWeatherData.map(weatherData => (
