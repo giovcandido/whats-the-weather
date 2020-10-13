@@ -1,8 +1,6 @@
 import React from 'react';
 import {FaLightbulb, FaRegLightbulb} from 'react-icons/fa';
 
-import styles from './ThemeButton.module.sass';
-
 interface IThemeButtonProps{
   dark: boolean;
   onThemeChange: Function;
@@ -28,7 +26,7 @@ const ThemeButton: React.FC<IThemeButtonProps> = ({dark, onThemeChange}) => {
   }
 
   return (
-    <button className={styles.button} onClick={() => onThemeChange()}>
+    <button className="btnLink" onClick={() => onThemeChange()}>
       {renderButtonContent()}
     </button>
   );
