@@ -21,14 +21,7 @@ const Home: React.FC = () => {
   const [allWeatherData, setAllWeatherData] = useState<ICurrentWeatherData[]>([]);
   const [errorMessage, setErrorMessage] = useState<string>('');
 
-  const handleCitySearch = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    
-    if(!cityName){
-      setErrorMessage('Type the name of the city to be searched. Ex: New York.');
-      return;
-    }
-
+  const retrieveData = async () => {
     try{
       const data = await fetchCurrentWeather(cityName, 'metric');
     
@@ -51,11 +44,30 @@ const Home: React.FC = () => {
     }
   }
 
+  const handleCitySearch = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    
+    if(!cityName){
+      setErrorMessage('Type the name of the city to be searched. Ex: New York.');
+      return;
+    }
+
+    const alreadyHasCity = allWeatherData.find(weatherData => {
+      return weatherData.name === cityName;
+    });
+
+    if(alreadyHasCity){
+      setErrorMessage('You have already searched for this city.');
+      return;
+    }
+
+    retrieveData();
+  }
+
   return(
     <ThemeContainer dark={darkTheme}>
       <div className="pageContainer">
         <PageHeader darkTheme={darkTheme} onThemeChange={() => setDarkTheme(!darkTheme)} />
-
         <section className={styles.pageSearch}>
           <h1>Get weather information for any city you want</h1>
           <form onSubmit={handleCitySearch}>
@@ -63,15 +75,14 @@ const Home: React.FC = () => {
             <button type="submit"><BiSearchAlt /></button>
           </form>
         </section>
-
-        {errorMessage && <ErrorMessage message={errorMessage} onErrorClose={() => {setErrorMessage(''); setCityName('')}} />}
-        
+        {errorMessage && (
+          <ErrorMessage message={errorMessage} onErrorClose={() => {setErrorMessage(''); setCityName('')}} />
+        )}
         <section className={styles.pageCards}>
           {allWeatherData.map(weatherData => (
             <WeatherCard key={weatherData.name} weatherData={weatherData} />
           ))} 
         </section>
-
         <PageFooter />
       </div>
     </ThemeContainer>
