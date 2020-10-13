@@ -1,7 +1,21 @@
+$secondary-color: #00c853
+
+::selection
+  background-color: $secondary-color
+
+input[type="text"]::selection
+  color: #212121
+
 .light
   background-color: #e0e0e0
   color: #212121
 
+  ::selection
+    color: #212121
+
 .dark
   background-color: #37474f
   color: #fff
+
+  ::selection
+    color: #fff
