@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "02fbf91b34544ab8e1a2836e49ff45f8",
+    "revision": "16095e6e78bd43cca22e0b296d6ce251",
     "url": "/whats-the-weather/index.html"
   },
   {
-    "revision": "072e8188a04e06be7f19",
-    "url": "/whats-the-weather/static/css/main.fc5da24a.chunk.css"
+    "revision": "75520d53e91442ccfb0f",
+    "url": "/whats-the-weather/static/css/main.392d0ef1.chunk.css"
   },
   {
-    "revision": "25a0479fd2993556d485",
-    "url": "/whats-the-weather/static/js/2.6c234856.chunk.js"
+    "revision": "b4194d669ba0ffd61a65",
+    "url": "/whats-the-weather/static/js/2.87aeb656.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/whats-the-weather/static/js/2.6c234856.chunk.js.LICENSE.txt"
+    "url": "/whats-the-weather/static/js/2.87aeb656.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "072e8188a04e06be7f19",
-    "url": "/whats-the-weather/static/js/main.54c27373.chunk.js"
+    "revision": "75520d53e91442ccfb0f",
+    "url": "/whats-the-weather/static/js/main.f1f186b6.chunk.js"
   },
   {
     "revision": "45409a66bed6330a484c",
