@@ -1,7 +1,7 @@
 # What's The Weather - works in all weathers
 
 <p align="center">
-    <img src="https://github.com/giovcandido/sedona/blob/master/demos/playlist_download.gif?raw=true" alt="Sedona downloading a playlist">
+    <img src="https://github.com/giovcandido/whats-the-weather/blob/master/images/example.png" alt="Sedona downloading a playlist">
 </p>
 
 Rain or shine, this weather app will tell you easily.
@@ -10,10 +10,9 @@ Rain or shine, this weather app will tell you easily.
 
 - [About](#about)
 - [Usage](#usage)
-- [Example](#example)
-- [Requirements](#requirements)
 - [Installation](#installation)
 - [Contribute](#contribute)
+- [More](#more)
 
 ## About
 
@@ -34,8 +33,6 @@ You can search as many cities as you want. And as you search, cards are added to
 If you want to remove the cards, try reloading the page. Additionally, there is a clear cards button you can use to avoid refreshing the page.
 
 Another cool thing you can do is turning on the lights. In case you don't like the default dark theme.
-
-## Demos
 
 ## Installation
 
@@ -91,7 +88,7 @@ yarn start
 
 Feel free to reach out and contribute. We can add more features to What's The Weather.
 
-## Learn More
+## More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
