@@ -1,44 +1,95 @@
-# whats-the-weather
-Weather app made with OpenWeatherMap API
+# What's The Weather - works in all weathers
+
+<p align="center">
+    <img src="https://github.com/giovcandido/sedona/blob/master/demos/playlist_download.gif?raw=true" alt="Sedona downloading a playlist">
+</p>
+
+Rain or shine, this weather app will tell you easily.
+
+## Contents
+
+- [About](#about)
+- [Usage](#usage)
+- [Example](#example)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Contribute](#contribute)
+
+## About
+
+What's The Weather is a web app that shows you information about the weather in all corners of the earth. It's made with ReactJS through OpenWeather public API. You can check it out [here](https://giovcandido.github.io/whats-the-weather/).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Usage
 
-In the project directory, you can run:w
+In order to use it, you can either use the live demo or download it to your machine.
 
-### `yarn start`
+The live demo uses my personal API. You can make a good couple of requests with it.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+All you have to do in both cases is loading the web app and serching for the city you want to get wheater data about. If the search is successful, a card with weather information about the city is added to the app front page. Otherwise, you may see an error message.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+You can search as many cities as you want. And as you search, cards are added to the page. 
 
-### `yarn test`
+If you want to remove the cards, try reloading the page. Additionally, there is a clear cards button you can use to avoid refreshing the page.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Another cool thing you can do is turning on the lights. In case you don't like the default dark theme.
 
-### `yarn build`
+## Demos
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Installation
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+If you want to clone the repository or download the source code to your machine, go ahead.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+After having the the app locally, you can run it with _yarn_.
 
-### `yarn eject`
+In order to do so, first you need to install yarn. Check the installation process [here](https://classic.yarnpkg.com/lang/en/docs/install/).
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Now, with yarn installed, open the source code directory in your terminal and run:
+```bash
+yarn install
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Then, you need to set your API key. Go to the __src__ directory. Inside of this one, there's the __config__ directory. Head to the config directory.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+In order to help you, we're looking at the following structure:
+```bash
+src
+├── config
+│   ├── config.sample.ts
+│   └── config.ts
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Making it easier for you, run:
+```bash
+cd src/config/
+```
+
+In the config directory, there's a _config.sample.ts_ with the following content:
+```ts
+export default {
+  api: {
+    baseURL: 'https://api.openweathermap.org/data/2.5/',
+    appid: '[YOUR KEY HERE]'
+  }
+}
+```
+
+Place your API key in _appid_, with single quotation marks. And rename the file to _config.ts_.
+
+Head back to the main directory by running:
+```bash
+cd ../..
+```
+
+Now, all you have to do is running:
+```bash
+yarn start
+```
+
+## Contribute
+
+Feel free to reach out and contribute. We can add more features to What's The Weather.
 
 ## Learn More
 
