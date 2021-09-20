@@ -1,7 +1,7 @@
 # What's The Weather - works in all weathers
 
 <p align="center">
-    <img src="https://github.com/giovcandido/whats-the-weather/blob/master/images/example.png" alt="Sedona downloading a playlist">
+    <img src="https://github.com/giovcandido/whats-the-weather/blob/master/images/example.png" alt="What's The Weather front page">
 </p>
 
 Rain or shine, this weather app will tell you easily.
