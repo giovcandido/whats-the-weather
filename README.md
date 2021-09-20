@@ -38,7 +38,7 @@ Another cool thing you can do is turning on the lights. In case you don't like t
 
 If you want to clone the repository or download the source code to your machine, go ahead.
 
-After having the the app locally, you can run it with _yarn_.
+After having the the app locally, you can run it with __yarn__.
 
 In order to do so, first you need to install yarn. Check the installation process [here](https://classic.yarnpkg.com/lang/en/docs/install/).
 
@@ -62,7 +62,7 @@ Making it easier for you, run:
 cd src/config/
 ```
 
-In the config directory, there's a _config.sample.ts_ with the following content:
+In the config directory, there's a __config.sample.ts__ with the following content:
 ```ts
 export default {
   api: {
@@ -72,7 +72,7 @@ export default {
 }
 ```
 
-Place your API key in _appid_, with single quotation marks. And rename the file to _config.ts_.
+Place your API key in __appid__, with single quotation marks. And rename the file to __config.ts__.
 
 Head back to the main directory by running:
 ```bash
